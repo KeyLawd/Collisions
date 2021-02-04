@@ -17,6 +17,7 @@ class position {
 public:
     double x,y,z;
     position(double a, double b, double c){x=a;y=b;z=c;}
+    position(double a, double b){x=a;y=b;z=0;}
     position(){x=0;y=0;z=0;}
 };
 
