@@ -1,19 +1,21 @@
 #include <iostream>
+using namespace std;
 
 const g=1;
-double distance_carre (x1,x2,y1,y2)
+
+double distance_carre (double x1,double x2,double y1,double y2)
 {
     return(pow(x2-x1,2)+pow(y2-y1,2));
 }
-using namespace std;
+
 int force ()
 {
-int somme =0;
-boite *suivant=boite_soeur;
+    int somme =0;
+    boite *suivant=boite_soeur;
     while (boite_soeur!=NULL)
     {
-          somme=somme+(suivant->masse*g)/distance_carre(xmass,ymass,suivant->xmass,suivant->ymass));
-          suivant=boite_soeur->boite_soeur;
+        somme=somme+(suivant->masse*g)/distance_carre(xmass,ymass,suivant->xmass,suivant->ymass));
+        suivant=boite_soeur->boite_soeur;
     }
     return(somme);
 }
