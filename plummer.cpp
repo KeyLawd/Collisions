@@ -1,21 +1,8 @@
-#include "particules.hpp"
-#include "boite.hpp"
-#include <random>
+#include "plummer.hpp"
 
-using namespace std;
-
-const double G = 1;
-const double M = 1;
-const double R = 1;
-
-constexpr int MIN = 0;
-constexpr int MAX = 1;
 std::random_device rd;
 std::default_random_engine eng(rd());
 std::uniform_real_distribution<double> distr(MIN, MAX);
-
-
-const int N = 10; //Nombre de particules dans l'univers
 
 particule generer_particule() {
     double X1 = distr(eng);
@@ -56,11 +43,3 @@ particule generer_particule() {
     p.vz() = w;
     return(p);
 }
-
-p1 = generer_particule();
-cout << "x = " << p1.x() <<endl;
-cout << "y = " << p1.y() <<endl;
-cout << "z = " << p1.z() <<endl;
-cout << "u = " << p1.vx() <<endl;
-cout << "v = " << p1.vy() <<endl;
-cout << "w = " << p1.vz() <<endl;

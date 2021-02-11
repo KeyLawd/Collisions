@@ -1,13 +1,13 @@
 #include <iostream>
+#include <fstream>
 #include "particules.hpp"
-#include "particules.hpp"
-#include "boite.hpp"
-#include <random>
+#include "plummer.hpp"
 
 using namespace std;
 
 int main()
 {
+    cout << "Tests de la classe particule" << endl;
     position X1(1,2,3);
     position V1(4,5,6);
     particule P1(X1,V1);
@@ -17,71 +17,59 @@ int main()
     P1.x() = 50;
     cout <<"x="<<P1.x()<<endl;
     P1.Lp.push_back(X1);
+    cout << "Tests de la fonction de génération de Plummer" << endl;
+    particule p1 = generer_particule();
+    cout << "x = " << p1.x() <<endl;
+    cout << "y = " << p1.y() <<endl;
+    cout << "z = " << p1.z() <<endl;
+    cout << "u = " << p1.vx() <<endl;
+    cout << "v = " << p1.vy() <<endl;
+    cout << "w = " << p1.vz() <<endl;
 
 
-using namespace std;
+//Boucle dynamique + exportation
+    double dt = 0.0001;//A ajuster
+    int np = 10000;//Nombre de pas, à ajuster
+    std::list<particule> liste_particules;
+    for (int i = 0;i < np;i++){
+        particule P = generer_particule();
+        liste_particules.push_back(P);
+    }
+    //On initialise la liste de particules
+    for (int i = 0; i < np; i++) {
+        for (std::list<particule>::iterator it = liste_particules.begin(); it != liste_particules.end(); it++) {
+            //Update la position de la particule et stocke la nouvelle position
+            //D'abord avec
 
-const double G = 1;
-const double M = 1;
-const double R = 1;
-
-constexpr int MIN = 0;
-constexpr int MAX = 1;
-std::random_device rd;
-std::default_random_engine eng(rd());
-std::uniform_real_distribution<double> distr(MIN, MAX);
-
-
-const int N = 10; //Nombre de particules dans l'univers
-
-particule generer_particule() {
-    double X1 = distr(eng);
-    double r = pow((pow(X1,-2/3)-1),-1/2);
-    double X2 = distr(eng);
-    double X3 = distr(eng);
-    double z = (1 - 2*X2)*r;
-    double x = pow(r*r-z*z,1/2)*cos(2*M_PI*X3);
-    double y = pow(r*r-z*z,1/2)*sin(2*M_PI*X3);
-    double X4 = distr(eng);
-    double X5 = distr(eng);
-    double Ve = sqrt(2)*pow(1+r*r,-1/4);
-    double q;
-    bool t = false;
-    while (!t) {
-        if (X5 < 10*X4*X4*pow(1-X4*X4,7/2)) {
-            q = X4;
-            t = true;
         }
-        else {
-            X4 = distr(eng);
-            X5 = distr(eng);
+        //A la fin de cette boucle, on a update chaque particule
+        //et chaque position est sotckee dans la liste de la classe
+
+    }
+    //A la fin de cette boucle, chaque particule conntient une lsite
+    //de toutes les positions qu'elle occupe entre 0 et tfinal
+
+    string const resultat("resultat.txt");
+    ofstream fluxresultat(resultat.c_str());
+
+    if(fluxresultat)
+    {
+        fluxresultat << np << endl;//nombre de pas de temps
+        fluxresultat << N << endl;//nombre de pas de
+        for (std::list<particule>::iterator particulecourante = liste_particules.begin(); particulecourante != liste_particules.end(); particulecourante++) {
+            for (std::list<position>::iterator positioncourante = particulecourante->Lp.begin(); positioncourante!= particulecourante->Lp.end(); positioncourante++){
+                fluxresultat << positioncourante->x << ";";
+                fluxresultat << positioncourante->y << ";";
+                fluxresultat << positioncourante->z << ";";
+                //A chaque pas de temps, on inscrit les 3 coordonnées
+            }
+            //A la fin de Lp, on saute une ligne
+            fluxresultat <<endl;
         }
     }
-    double V = q*Ve;
-    double X6 = distr(eng);
-    double X7 = distr(eng);
-    double w = (1-2*X6)*V;
-    double u = pow(V*V-w*w,1/2)*cos(2*M_PI*X7);
-    double v = pow(V*V-w*w,1/2)*sin(2*M_PI*X7);
-
-    particule p;
-    p.x() = x;
-    p.y() = y;
-    p.z() = z;
-    p.vx() = u;
-    p.vy() = v;
-    p.vz() = w;
-    return(p);
-}
-
-p1 = generer_particule();
-cout << "x = " << p1.x() <<endl;
-cout << "y = " << p1.y() <<endl;
-cout << "z = " << p1.z() <<endl;
-cout << "u = " << p1.vx() <<endl;
-cout << "v = " << p1.vy() <<endl;
-cout << "w = " << p1.vz() <<endl;
-
-
+    else
+    {
+        cout << "ERREUR: Impossible d'ouvrir le fichier." << endl;
+    }
     return 0;
 }

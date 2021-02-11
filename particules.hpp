@@ -87,6 +87,9 @@ public:
     double& fz() {
         return F.z;
     };
+    std::list<position>& L(){
+        return Lp;
+    };
 };
 
 #endif // particule_H
