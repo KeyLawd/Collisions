@@ -1,23 +1,6 @@
-#include <iostream>
-#include "particules.hpp"
 #include "particules.hpp"
 #include "boite.hpp"
 #include <random>
-
-using namespace std;
-
-int main()
-{
-    position X1(1,2,3);
-    position V1(4,5,6);
-    particule P1(X1,V1);
-    cout << "Hello world!" << endl;
-    cout << "x="<<P1.x() << endl;
-    cout << "vx="<<P1.vx() << endl;
-    P1.x() = 50;
-    cout <<"x="<<P1.x()<<endl;
-    P1.Lp.push_back(X1);
-
 
 using namespace std;
 
@@ -81,7 +64,3 @@ cout << "z = " << p1.z() <<endl;
 cout << "u = " << p1.vx() <<endl;
 cout << "v = " << p1.vy() <<endl;
 cout << "w = " << p1.vz() <<endl;
-
-
-    return 0;
-}

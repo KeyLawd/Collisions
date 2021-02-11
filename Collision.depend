@@ -10,3 +10,14 @@
 
 1611822367 source:c:\documents\cours\2a\sim202\collision\plummer.cpp
 
+1612433127 source:c:\documents\cours\2a\sim202\collision\collisions\main.cpp
+	<iostream>
+	"particules.hpp"
+
+1612433127 c:\documents\cours\2a\sim202\collision\collisions\particules.hpp
+	<iostream>
+	<list>
+	<iterator>
+
+1612433127 source:c:\documents\cours\2a\sim202\collision\collisions\particules.cpp
+
