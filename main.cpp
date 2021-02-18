@@ -31,7 +31,7 @@ int main()
 
 //Boucle dynamique + exportation
     int N = 100;//Nombre de particules
-    int nt = 10; //Nombre de pas de temps
+    int nt = 1000; //Nombre de pas de temps
     std::list<particule> liste_particules;
     for (int i = 0; i < N; i++) {
         particule P = generer_particule();
@@ -41,7 +41,7 @@ int main()
     for (int i = 0; i < nt; i++) {
         for (std::list<particule>::iterator p = liste_particules.begin(); p != liste_particules.end(); p++) {
             //Update la position de la particule et stocke la nouvelle position
-            dynamique((*p), liste_particules);
+            dynamique((*p), liste_particules,i);
         }
         //A la fin de cette boucle, on a update chaque particule
         //et chaque position est sotckee dans la liste de la classe

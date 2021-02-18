@@ -123,18 +123,12 @@ void dynamique(particule& p, std::list<particule> &liste_particules, int k) //k 
     //p.P.z=z_instant;
     p.V.x=vx_instant;
     p.V.y=vy_instant;
-<<<<<<< HEAD
     //p.V.z=vz_instant;
 
-=======
+
     p.F.x=fx_instant;
     p.F.y=fy_instant;
-    position pcourante;
-    pcourante.x = p.x();
-    pcourante.y = p.y();
-    pcourante.z = p.z();
-    p.Lp.push_back(pcourante);
->>>>>>> 235b8f96a9a74638fc9f5aff3d179d0ac514bce8
+
     //mise à jour de la boite
     //B.ajout_part(p);
 
