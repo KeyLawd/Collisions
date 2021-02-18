@@ -1,7 +1,9 @@
 #include <iostream>
+#include <math.h>
+#include "boite.hpp"
 using namespace std;
 
-const g=1;
+const double g=1;
 
 double distance_carre (double x1,double x2,double y1,double y2)
 {

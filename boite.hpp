@@ -1,3 +1,5 @@
+#include "particules.hpp"
+
 class boite
 {
 public:

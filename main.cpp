@@ -2,6 +2,7 @@
 #include <fstream>
 #include "particules.hpp"
 #include "plummer.hpp"
+#include "dynamique.h"
 
 using namespace std;
 
