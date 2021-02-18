@@ -82,7 +82,6 @@ void dynamique(particule& p, std::list<particule> &liste_particules)
     pcourante.y = p.y();
     pcourante.z = p.z();
     p.Lp.push_back(pcourante);
-
     //mise à jour de la boite
     //B.supprimer_part(p);
     //B.ajout_part(p);

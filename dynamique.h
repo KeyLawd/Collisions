@@ -3,6 +3,6 @@
 
 double distance (double x1,double x2,double y1,double y2);
 void force_brute(particule& p, std::list<particule> &liste_particules);
-void dynamique( particule& p, std::list<particule> &liste_particules, int k_finale);
+void dynamique(particule& p, std::list<particule> &liste_particules);
 
 #endif // DYNAMIQUE_H_INCLUDED

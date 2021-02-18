@@ -34,6 +34,8 @@
 		</Compiler>
 		<Unit filename="boite.cpp" />
 		<Unit filename="boite.hpp" />
+		<Unit filename="dynamique.cpp" />
+		<Unit filename="dynamique.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="particules.cpp" />
 		<Unit filename="particules.hpp" />

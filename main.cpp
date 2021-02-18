@@ -8,6 +8,7 @@ using namespace std;
 
 int main()
 {
+    /*
     cout << "Tests de la classe particule" << endl;
     position X1(1,2,3);
     position V1(4,5,6);
@@ -26,11 +27,11 @@ int main()
     cout << "u = " << p1.vx() <<endl;
     cout << "v = " << p1.vy() <<endl;
     cout << "w = " << p1.vz() <<endl;
-
+    */
 
 //Boucle dynamique + exportation
     double dt = 0.0001;//A ajuster
-    int np = 10000;//Nombre de pas, à ajuster
+    int np = 1000;//Nombre de pas, à ajuster
     std::list<particule> liste_particules;
     for (int i = 0; i < np; i++) {
         particule P = generer_particule();
@@ -38,14 +39,9 @@ int main()
     }
     //On initialise la liste de particules
     for (int i = 0; i < np; i++) {
-        for (std::list<particule>::iterator *p = liste_particules.begin(); *p != liste_particules.end(); *p++) {
+        for (std::list<particule>::iterator p = liste_particules.begin(); p != liste_particules.end(); p++) {
             //Update la position de la particule et stocke la nouvelle position
-            dynamique(p, liste_particules);
-            position pcourante;
-            pcourante.x = p.x();
-            pcourante.y = p.y();
-            pcourante.z = p.z();
-            p.Lp.push_back(pcourante);
+            dynamique((*p), liste_particules);
         }
         //A la fin de cette boucle, on a update chaque particule
         //et chaque position est sotckee dans la liste de la classe
