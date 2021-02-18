@@ -4,7 +4,7 @@
 using namespace std;
 
 const double g=1;
-
+/*
 double distance_carre (double x1,double x2,double y1,double y2)
 {
     return(pow(x2-x1,2)+pow(y2-y1,2));
@@ -61,3 +61,4 @@ void ajout_part(boite * B, particule * p)
     else //boite non terminale
         ajout_part(F->boite_fille,p);
 }
+*/

@@ -32,16 +32,20 @@ int main()
     double dt = 0.0001;//A ajuster
     int np = 10000;//Nombre de pas, à ajuster
     std::list<particule> liste_particules;
-    for (int i = 0;i < np;i++){
+    for (int i = 0; i < np; i++) {
         particule P = generer_particule();
         liste_particules.push_back(P);
     }
     //On initialise la liste de particules
     for (int i = 0; i < np; i++) {
-        for (std::list<particule>::iterator it = liste_particules.begin(); it != liste_particules.end(); it++) {
+        for (std::list<particule>::iterator *p = liste_particules.begin(); *p != liste_particules.end(); *p++) {
             //Update la position de la particule et stocke la nouvelle position
-            //D'abord avec
-
+            dynamique(p, liste_particules);
+            position pcourante;
+            pcourante.x = p.x();
+            pcourante.y = p.y();
+            pcourante.z = p.z();
+            p.Lp.push_back(pcourante);
         }
         //A la fin de cette boucle, on a update chaque particule
         //et chaque position est sotckee dans la liste de la classe
@@ -56,9 +60,9 @@ int main()
     if(fluxresultat)
     {
         fluxresultat << np << endl;//nombre de pas de temps
-        fluxresultat << N << endl;//nombre de pas de
+        fluxresultat << N << endl;//nombre de particules
         for (std::list<particule>::iterator particulecourante = liste_particules.begin(); particulecourante != liste_particules.end(); particulecourante++) {
-            for (std::list<position>::iterator positioncourante = particulecourante->Lp.begin(); positioncourante!= particulecourante->Lp.end(); positioncourante++){
+            for (std::list<position>::iterator positioncourante = particulecourante->Lp.begin(); positioncourante!= particulecourante->Lp.end(); positioncourante++) {
                 fluxresultat << positioncourante->x << ";";
                 fluxresultat << positioncourante->y << ";";
                 fluxresultat << positioncourante->z << ";";

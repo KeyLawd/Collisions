@@ -29,7 +29,7 @@ void force_brute(particule& p, std::list<particule> &liste_particules)
     }
 }
 
-void dynamique( particule& p, std::list<particule> &liste_particules, int k_finale)
+void dynamique(particule& p, std::list<particule> &liste_particules)
 {
     //Recuperer les composantes des vecteurs position, vitesse et force
     double x_init=p.x();
@@ -41,7 +41,7 @@ void dynamique( particule& p, std::list<particule> &liste_particules, int k_fina
     // !!!!!!!! initialiser la liste des positions
 
 
-        //------------- premier instant (k=0) ----------
+    //------------- premier instant (k=0) ----------
     double vx_instant=vx_init+h/(2*M)*fx_init;
     double vy_instant=vy_init+h/(2*M)*fy_init;
     double x_instant=x_init+h*vx_instant;
@@ -60,28 +60,31 @@ void dynamique( particule& p, std::list<particule> &liste_particules, int k_fina
     //B.ajout_part(p);
 
     //calculer la position et vitesse après t=k*delta t
-    for (int i=1; i<k_finale; i++)
-    {
-        force_brute(p, liste_particules);
-        double fx_instant=p.fx();
-        double fy_instant=p.fy();
-        double vx_instant=vx_instant+(h*fx_instant)/M;
-        double vy_instant=vy_instant+(h*fy_instant)/M;
-        double x_instant=x_instant+h*vx_instant;
-        double y_instant=y_instant+h*vy_instant;
-        // !!!!!!!! la liste des positions
 
-        //Mettre à jour la particule
-        p.P.x=x_instant;
-        p.P.y=y_instant;
-        p.V.x=vx_instant;
-        p.V.y=vy_instant;
-        p.F.x=fx_instant;
-        p.F.y=fy_instant;
-        //!!!!!liste
+    force_brute(p, liste_particules);
+    double fx_instant=p.fx();
+    double fy_instant=p.fy();
+    vx_instant=vx_instant+(h*fx_instant)/M;
+    vy_instant=vy_instant+(h*fy_instant)/M;
+    x_instant=x_instant+h*vx_instant;
+    y_instant=y_instant+h*vy_instant;
+    // !!!!!!!! la liste des positions
 
-        //mise à jour de la boite
-        //B.supprimer_part(p);
-        //B.ajout_part(p);
-    }
+    //Mettre à jour la particule
+    p.P.x=x_instant;
+    p.P.y=y_instant;
+    p.V.x=vx_instant;
+    p.V.y=vy_instant;
+    p.F.x=fx_instant;
+    p.F.y=fy_instant;
+    position pcourante;
+    pcourante.x = p.x();
+    pcourante.y = p.y();
+    pcourante.z = p.z();
+    p.Lp.push_back(pcourante);
+
+    //mise à jour de la boite
+    //B.supprimer_part(p);
+    //B.ajout_part(p);
+
 }

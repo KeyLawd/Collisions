@@ -16,9 +16,21 @@ using namespace std;
 class position {
 public:
     double x,y,z;
-    position(double a, double b, double c){x=a;y=b;z=c;}
-    position(double a, double b){x=a;y=b;z=0;}
-    position(){x=0;y=0;z=0;}
+    position(double a, double b, double c) {
+        x=a;
+        y=b;
+        z=c;
+    }
+    position(double a, double b) {
+        x=a;
+        y=b;
+        z=0;
+    }
+    position() {
+        x=0;
+        y=0;
+        z=0;
+    }
 };
 
 
@@ -58,7 +70,14 @@ public:
         F.z = 0;
         Lp.push_back(Q);
     };//Initialise une particule avec P et V donnés, F et Lp sont vides
-    particule();                            //Bah faut allouer de la place quoi
+    particule() {
+        P.x = 0;
+        P.y = 0;
+        P.z = 0;
+        V.x = 0;
+        V.y=0;
+        V.z=0;
+    };                            //Bah faut allouer de la place quoi
     //Accès rapide
     double& x() {
         return P.x;
@@ -87,7 +106,7 @@ public:
     double& fz() {
         return F.z;
     };
-    std::list<position>& L(){
+    std::list<position>& L() {
         return Lp;
     };
 };

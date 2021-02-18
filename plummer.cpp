@@ -1,5 +1,5 @@
 #include "plummer.hpp"
-
+#include "particules.hpp"
 std::random_device rd;
 std::default_random_engine eng(rd());
 std::uniform_real_distribution<double> distr(MIN, MAX);

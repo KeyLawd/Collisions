@@ -10,22 +10,23 @@
 
 1611822367 source:c:\documents\cours\2a\sim202\collision\plummer.cpp
 
-1613636691 source:c:\documents\cours\2a\sim202\collision\collisions\main.cpp
+1613638094 source:c:\documents\cours\2a\sim202\collision\collisions\main.cpp
 	<iostream>
 	<fstream>
 	"particules.hpp"
 	"plummer.hpp"
 	"dynamique.h"
 
-1613040368 c:\documents\cours\2a\sim202\collision\collisions\particules.hpp
+1613638924 c:\documents\cours\2a\sim202\collision\collisions\particules.hpp
 	<iostream>
 	<list>
 	<iterator>
 
 1612433127 source:c:\documents\cours\2a\sim202\collision\collisions\particules.cpp
 
-1613038824 source:c:\documents\cours\2a\sim202\collision\collisions\plummer.cpp
+1613638365 source:c:\documents\cours\2a\sim202\collision\collisions\plummer.cpp
 	"plummer.hpp"
+	"particules.hpp"
 
 1613033613 c:\documents\cours\2a\sim202\collision\collisions\plummer.hpp
 	"particules.hpp"
@@ -35,9 +36,14 @@
 1613032737 c:\documents\cours\2a\sim202\collision\collisions\boite.hpp
 	"particules.hpp"
 
-1613636634 source:c:\documents\cours\2a\sim202\collision\collisions\dynamique.cpp
+1613639276 source:c:\documents\cours\2a\sim202\collision\collisions\dynamique.cpp
 	"particules.hpp"
 	<math.h>
 
 1613636625 c:\documents\cours\2a\sim202\collision\collisions\dynamique.h
+
+1613638131 source:c:\documents\cours\2a\sim202\collision\collisions\boite.cpp
+	<iostream>
+	<math.h>
+	"boite.hpp"
 

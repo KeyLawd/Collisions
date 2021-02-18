@@ -4,13 +4,9 @@
 %                                                 y21 y21 z21 x22....
 %(Chaque ligne est un pas de temps)
 
-
 for t = 1:nt
-    for p = 1:np
-        
-        
-        
-        
-        
-    end    
+    for 
+    
+    
+    
 end
