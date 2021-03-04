@@ -30,8 +30,12 @@ int main()
     */
 
 //Boucle dynamique + exportation
-    int N = 100;//Nombre de particules
-    int nt = 1000; //Nombre de pas de temps
+    int N = 2;//Nombre de particules
+    cout << "Nombre de particules" << endl << "np = ";
+    cin >> N;
+    int nt = 10000; //Nombre de pas de temps
+    cout << "Nombre de pas de temps" << endl << "nt = ";
+    cin >> nt;
     std::list<particule> liste_particules;
     for (int i = 0; i < N; i++) {
         particule P = generer_particule();
@@ -45,7 +49,7 @@ int main()
         }
         //A la fin de cette boucle, on a update chaque particule
         //et chaque position est sotckee dans la liste de la classe
-        cout << i <<endl;
+        //cout << i <<endl;
 
     }
     //A la fin de cette boucle, chaque particule conntient une lsite
@@ -76,7 +80,7 @@ int main()
             }
             //A la fin de Lp, on saute une ligne
             fluxresultat <<endl;
-
+            // CHAQUE LIGNE EST UNE P A R T I C U L E, *****PAS**** UN PAS DE TEMPS!!!!
         }
 
     }
