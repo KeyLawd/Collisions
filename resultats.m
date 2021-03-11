@@ -2,7 +2,7 @@ clear all; %#ok<CLALL>
 close all;
 
  writerObj = VideoWriter('resultat.avi');
- writerObj.FrameRate = 5;
+ writerObj.FrameRate = 50;
  open(writerObj);
  axis([-1000 1000 -1000 1000]);
 

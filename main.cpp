@@ -56,7 +56,7 @@ int main()
     //de toutes les positions qu'elle occupe entre 0 et tfinal
     string const dimension("dimension.txt");
     ofstream fluxdim(dimension.c_str());
-    if(fluxdim){
+    if(fluxdim) {
         fluxdim << nt << endl;//nombre de pas de temps
         fluxdim << N << endl;//nombre de particules
 

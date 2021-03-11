@@ -32,8 +32,8 @@ void force_brute(particule& p, std::list<particule> &liste_particules)
             double r=distance(x_part,p.x(),y_part,p.y());
             // double r=distance(x_part,p.x(),y_part,p.y(),z_part,p.z()); //en 3D
             module_force=(M*g)/(pow(r,2)+pow(epsilon,2));
-            p.F.x=p.F.x+module_force*(x_part-p.x())/r;
-            p.F.y=p.F.y+module_force*(y_part-p.y())/r;
+            p.F.x=p.F.x-module_force*(x_part-p.x())/r;
+            p.F.y=p.F.y-module_force*(y_part-p.y())/r;
             //p.F.z=p.F.z+module_force*(z_part-p.z())/r;
         }
     }

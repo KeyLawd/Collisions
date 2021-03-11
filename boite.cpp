@@ -4,23 +4,12 @@
 using namespace std;
 
 const double g=1;
-/*
+
 double distance_carre (double x1,double x2,double y1,double y2)
 {
     return(pow(x2-x1,2)+pow(y2-y1,2));
 }
 
-int force ()
-{
-    int somme =0;
-    boite *suivant=boite_soeur;
-    while (boite_soeur!=NULL)
-    {
-        somme=somme+(suivant->masse*g)/distance_carre(xmass,ymass,suivant->xmass,suivant->ymass));
-        suivant=boite_soeur->boite_soeur;
-    }
-    return(somme);
-}
 
 void ajout_part(boite * B, particule * p)
 {
@@ -61,4 +50,46 @@ void ajout_part(boite * B, particule * p)
     else //boite non terminale
         ajout_part(F->boite_fille,p);
 }
-*/
+
+const double g=1;
+
+//calculer la distance entre deux particules en 2D
+double distance (double x1,double x2,double y1,double y2)
+{
+    return(sqrt(pow(x2-x1,2)+pow(y2-y1,2)));
+}
+
+
+//calculer la distance entre deux particules en 3D
+//double distance (double x1,double x2,double y1,double y2, double z1, double z2)
+//{
+//    return(sqrt(pow(x2-x1,2)+pow(y2-y1,2)+pow(z2-z1,2));
+//}
+
+void force(particule *part_courante)
+{
+    if (part_courante==NULL)
+    {
+        return();
+    }
+
+    int indic=1; //indice de parcours des 4 boites soeurs
+    boite *suivant=boite_soeur;
+    while (indic<4)
+    {
+    indic=indic+1; //On passe à la boite voisine
+    double r=distance(part_courante.x(),suivant->centre_masse.x,part_courante.y(),suivant->centre_masse.y);
+    // double r=distance(part_courante.x(),suivant->centre_masse.x,part_courante.y(),suivant->centre_masse.y,part_courante.z(),suivant->centre_masse.z); //en 3D
+    module_force=(suivant->masse*g)/(pow(r,2)+pow(epsilon,2));
+    part_courante.F.x=part_courante.F.x+module_force*(part_courante.x()-centre_masse.x))/r;
+    part_courante.F.y=part_courante.F.y+module_force*(part_courante.y()-suivant->centre_masse.y)/r;
+    //part_courante.F.z=part_courante.F.z+module_force*(part_courante.z()-suivant->centre_masse.z)/r;
+    suivant=suivant->boite_soeur;
+    }
+
+    if(boite_mere!=NULL)
+    {
+        boite_mere.force(part_courante);
+    }
+}
+
